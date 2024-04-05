@@ -1,0 +1,346 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AND
+    AND_EQUAL
+    ARROW
+    CASE
+    COMMENT
+    DECREMENT
+    DEFAULT
+    DIVIDE_EQUAL
+    DO
+    EMPTY_STRING
+    ENUM
+    FALSE
+    FOR
+    INCREMENT
+    INVALID
+    LONG
+    MINUS_EQUAL
+    MODULO
+    MODULO_EQUAL
+    MULTIPLY_EQUAL
+    OR_EQUAL
+    PLUS_EQUAL
+    QUESTION
+    SHIFT_L
+    SHIFT_L_EQUAL
+    SHIFT_R
+    SHIFT_R_EQUAL
+    SHORT
+    SIGNED
+    SIZEOF
+    SWITCH
+    TRUE
+    UNSIGNED
+    XOR_EQUAL
+
+Grammar
+
+Rule 0     S' -> translation-unit
+Rule 1     translation-unit -> external-declaration-list
+Rule 2     external-declaration-list -> external-declaration external-declaration-list
+Rule 3     external-declaration-list -> lambda
+Rule 4     external-declaration -> function-definition
+Rule 5     function-definition -> declaration-specifier-list direct-declarator declaration-list compound-statement
+Rule 6     declaration-specifier-list -> declaration-specifier declaration-specifier-list
+Rule 7     declaration-specifier-list -> lambda
+Rule 8     declaration-list -> declaration declaration-list
+Rule 9     declaration-list -> lambda
+Rule 10    declaration-specifier -> storage-class-specifier
+Rule 11    declaration-specifier -> type-specifier
+Rule 12    declaration-specifier -> type-qualifier
+Rule 13    storage-class-specifier -> AUTO
+Rule 14    storage-class-specifier -> REGISTER
+Rule 15    storage-class-specifier -> STATIC
+Rule 16    storage-class-specifier -> EXTERN
+Rule 17    storage-class-specifier -> TYPEDEF
+Rule 18    type-specifier -> VOID
+Rule 19    type-specifier -> FLOAT
+Rule 20    type-specifier -> CHAR
+Rule 21    type-specifier -> INT
+Rule 22    type-specifier -> DOUBLE
+Rule 23    type-specifier -> struct-or-union-specifier
+Rule 24    struct-or-union-specifier -> struct-or-union IDENTIFIER LEFT_BRACE struct-declaration struct-declaration-list RIGHT_BRACE
+Rule 25    struct-or-union-specifier -> struct-or-union LEFT_BRACE struct-declaration struct-declaration-list RIGHT_BRACE
+Rule 26    struct-or-union-specifier -> struct-or-union IDENTIFIER
+Rule 27    struct-declaration-list -> specifier-qualifier-list struct-declaration-list
+Rule 28    struct-declaration-list -> lambda
+Rule 29    struct-or-union -> STRUCT
+Rule 30    struct-or-union -> UNION
+Rule 31    struct-declaration -> specifier-qualifier-list struct-declarator-list
+Rule 32    struct-declarator-list -> struct-declarator
+Rule 33    struct-declarator-list -> struct-declarator-list COMMA struct-declarator
+Rule 34    struct-declarator -> direct-declarator
+Rule 35    struct-declarator -> direct-declarator COLON constant-expression
+Rule 36    struct-declarator -> COLON constant-expression
+Rule 37    specifier-qualifier-list -> specifier-qualifier specifier-qualifier-list
+Rule 38    specifier-qualifier-list -> lambda
+Rule 39    specifier-qualifier -> type-specifier
+Rule 40    specifier-qualifier -> type-qualifier
+Rule 41    type-qualifier -> CONST
+Rule 42    type-qualifier -> VOLATILE
+Rule 43    direct-declarator -> IDENTIFIER
+Rule 44    direct-declarator -> LEFT_PAREN direct-declarator RIGHT_PAREN
+Rule 45    direct-declarator -> direct-declarator LEFT_BRACKET constant-expression-list RIGHT_BRACKET
+Rule 46    direct-declarator -> direct-declarator LEFT_PAREN parameter-type-list RIGHT_PAREN
+Rule 47    direct-declarator -> direct-declarator LEFT_PAREN identifier-list RIGHT_PAREN
+Rule 48    identifier-list -> IDENTIFIER identifier-list
+Rule 49    identifier-list -> lambda
+Rule 50    constant-expression-list -> constant-expression
+Rule 51    constant-expression-list -> lambda
+Rule 52    constant-expression -> logical-or-expression
+Rule 53    logical-or-expression -> logical-and-expression
+Rule 54    logical-or-expression -> logical-or-expression LOGICAL_OR logical-and-expression
+Rule 55    logical-and-expression -> inclusive-or-expression
+Rule 56    logical-and-expression -> logical-and-expression LOGICAL_AND inclusive-or-expression
+Rule 57    inclusive-or-expression -> exclusive-or-expression
+Rule 58    inclusive-or-expression -> inclusive-or-expression OR exclusive-or-expression
+Rule 59    exclusive-or-expression -> and-expression
+Rule 60    exclusive-or-expression -> exclusive-or-expression XOR and-expression
+Rule 61    and-expression -> equality-expression
+Rule 62    and-expression -> and-expression XOR equality-expression
+Rule 63    equality-expression -> relational-expression
+Rule 64    equality-expression -> equality-expression EQUAL relational-expression
+Rule 65    equality-expression -> equality-expression NOT_EQUAL relational-expression
+Rule 66    relational-expression -> additive-expression
+Rule 67    relational-expression -> relational-expression LESS additive-expression
+Rule 68    relational-expression -> relational-expression GREATER additive-expression
+Rule 69    relational-expression -> relational-expression LESS_EQUAL additive-expression
+Rule 70    relational-expression -> relational-expression GREATER_EQUAL additive-expression
+Rule 71    additive-expression -> multiplicative-expression
+Rule 72    additive-expression -> additive-expression PLUS multiplicative-expression
+Rule 73    additive-expression -> additive-expression MINUS multiplicative-expression
+Rule 74    multiplicative-expression -> cast-expression
+Rule 75    multiplicative-expression -> multiplicative-expression MULTIPLY cast-expression
+Rule 76    multiplicative-expression -> multiplicative-expression DIVIDE cast-expression
+Rule 77    cast-expression -> unary-expression
+Rule 78    cast-expression -> LEFT_PAREN type-name RIGHT_PAREN cast-expression
+Rule 79    unary-expression -> postfix-expression
+Rule 80    unary-expression -> unary-operator cast-expression
+Rule 81    postfix-expression -> primary-expression
+Rule 82    postfix-expression -> postfix-expression LEFT_BRACKET expression RIGHT_BRACKET
+Rule 83    postfix-expression -> postfix-expression LEFT_PAREN assignment-expression-list RIGHT_PAREN
+Rule 84    postfix-expression -> postfix-expression DOT IDENTIFIER
+Rule 85    assignment-expression-list -> assignment-expression assignment-expression-list
+Rule 86    assignment-expression-list -> lambda
+Rule 87    primary-expression -> IDENTIFIER
+Rule 88    primary-expression -> constant
+Rule 89    primary-expression -> STRING
+Rule 90    primary-expression -> LEFT_PAREN expression RIGHT_PAREN
+Rule 91    constant -> NUMBER
+Rule 92    constant -> CHARACTER
+Rule 93    constant -> FLOAT_NUMBER
+Rule 94    expression -> assignment-expression
+Rule 95    expression -> expression COMMA assignment-expression
+Rule 96    assignment-expression -> logical-or-expression
+Rule 97    assignment-expression -> unary-expression ASSIGN assignment-expression
+Rule 98    unary-operator -> LOGICAL_AND
+Rule 99    unary-operator -> MULTIPLY
+Rule 100   unary-operator -> PLUS
+Rule 101   unary-operator -> MINUS
+Rule 102   unary-operator -> BITWISE_NOT
+Rule 103   unary-operator -> NOT
+Rule 104   type-name -> specifier-qualifier specifier-qualifier-list direct-abstract-declarator-list
+Rule 105   direct-abstract-declarator-list -> direct-abstract-declarator
+Rule 106   direct-abstract-declarator-list -> lambda
+Rule 107   parameter-type-list -> parameter-list
+Rule 108   parameter-type-list -> parameter-list COMMA ELLIPSIS
+Rule 109   parameter-list -> parameter-declaration
+Rule 110   parameter-list -> parameter-list COMMA parameter-declaration
+Rule 111   parameter-declaration -> declaration-specifier declaration-specifier-list direct-declarator
+Rule 112   parameter-declaration -> declaration-specifier declaration-specifier-list direct-abstract-declarator
+Rule 113   parameter-declaration -> declaration-specifier declaration-specifier-list
+Rule 114   direct-abstract-declarator -> LEFT_PAREN direct-abstract-declarator RIGHT_PAREN
+Rule 115   direct-abstract-declarator -> direct-abstract-declarator-list LEFT_BRACKET constant-expression-list RIGHT_BRACKET
+Rule 116   direct-abstract-declarator -> direct-abstract-declarator-list LEFT_PAREN parameter-type-list-1 RIGHT_PAREN
+Rule 117   parameter-type-list-1 -> parameter-type-list
+Rule 118   parameter-type-list-1 -> lambda
+Rule 119   declaration -> declaration-specifier declaration-specifier-list init-declarator-list SEMICOLON
+Rule 120   init-declarator-list -> init-declarator init-declarator-list
+Rule 121   init-declarator -> direct-declarator
+Rule 122   init-declarator -> direct-declarator ASSIGN initializer
+Rule 123   initializer -> assignment-expression
+Rule 124   initializer -> LEFT_BRACE initializer-list RIGHT_BRACE
+Rule 125   initializer -> LEFT_BRACE initializer-list COMMA RIGHT_BRACE
+Rule 126   initializer-list -> initializer
+Rule 127   initializer-list -> initializer-list COMMA initializer
+Rule 128   compound-statement -> LEFT_BRACE declaration-list statement-list RIGHT_BRACE
+Rule 129   statement-list -> statement statement-list
+Rule 130   statement-list -> lambda
+Rule 131   statement -> expression-statement
+Rule 132   statement -> compound-statement
+Rule 133   statement -> selection-statement
+Rule 134   statement -> iteration-statement
+Rule 135   statement -> jump-statement
+Rule 136   expression-statement -> expression SEMICOLON
+Rule 137   expression-statement -> SEMICOLON
+Rule 138   selection-statement -> IF LEFT_PAREN expression RIGHT_PAREN statement
+Rule 139   selection-statement -> IF LEFT_PAREN expression RIGHT_PAREN statement ELSE statement
+Rule 140   iteration-statement -> WHILE LEFT_PAREN expression RIGHT_PAREN statement
+Rule 141   jump-statement -> GOTO IDENTIFIER SEMICOLON
+Rule 142   jump-statement -> CONTINUE SEMICOLON
+Rule 143   jump-statement -> BREAK SEMICOLON
+Rule 144   jump-statement -> RETURN expression-list SEMICOLON
+Rule 145   expression-list -> expression
+Rule 146   expression-list -> lambda
+Rule 147   lambda -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 
+AND_EQUAL            : 
+ARROW                : 
+ASSIGN               : 97 122
+AUTO                 : 13
+BITWISE_NOT          : 102
+BREAK                : 143
+CASE                 : 
+CHAR                 : 20
+CHARACTER            : 92
+COLON                : 35 36
+COMMA                : 33 95 108 110 125 127
+COMMENT              : 
+CONST                : 41
+CONTINUE             : 142
+DECREMENT            : 
+DEFAULT              : 
+DIVIDE               : 76
+DIVIDE_EQUAL         : 
+DO                   : 
+DOT                  : 84
+DOUBLE               : 22
+ELLIPSIS             : 108
+ELSE                 : 139
+EMPTY_STRING         : 
+ENUM                 : 
+EQUAL                : 64
+EXTERN               : 16
+FALSE                : 
+FLOAT                : 19
+FLOAT_NUMBER         : 93
+FOR                  : 
+GOTO                 : 141
+GREATER              : 68
+GREATER_EQUAL        : 70
+IDENTIFIER           : 24 26 43 48 84 87 141
+IF                   : 138 139
+INCREMENT            : 
+INT                  : 21
+INVALID              : 
+LEFT_BRACE           : 24 25 124 125 128
+LEFT_BRACKET         : 45 82 115
+LEFT_PAREN           : 44 46 47 78 83 90 114 116 138 139 140
+LESS                 : 67
+LESS_EQUAL           : 69
+LOGICAL_AND          : 56 98
+LOGICAL_OR           : 54
+LONG                 : 
+MINUS                : 73 101
+MINUS_EQUAL          : 
+MODULO               : 
+MODULO_EQUAL         : 
+MULTIPLY             : 75 99
+MULTIPLY_EQUAL       : 
+NOT                  : 103
+NOT_EQUAL            : 65
+NUMBER               : 91
+OR                   : 58
+OR_EQUAL             : 
+PLUS                 : 72 100
+PLUS_EQUAL           : 
+QUESTION             : 
+REGISTER             : 14
+RETURN               : 144
+RIGHT_BRACE          : 24 25 124 125 128
+RIGHT_BRACKET        : 45 82 115
+RIGHT_PAREN          : 44 46 47 78 83 90 114 116 138 139 140
+SEMICOLON            : 119 136 137 141 142 143 144
+SHIFT_L              : 
+SHIFT_L_EQUAL        : 
+SHIFT_R              : 
+SHIFT_R_EQUAL        : 
+SHORT                : 
+SIGNED               : 
+SIZEOF               : 
+STATIC               : 15
+STRING               : 89
+STRUCT               : 29
+SWITCH               : 
+TRUE                 : 
+TYPEDEF              : 17
+UNION                : 30
+UNSIGNED             : 
+VOID                 : 18
+VOLATILE             : 42
+WHILE                : 140
+XOR                  : 60 62
+XOR_EQUAL            : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+additive-expression  : 66 67 68 69 70 72 73
+and-expression       : 59 60 62
+assignment-expression : 85 94 95 97 123
+assignment-expression-list : 83 85
+cast-expression      : 74 75 76 78 80
+compound-statement   : 5 132
+constant             : 88
+constant-expression  : 35 36 50
+constant-expression-list : 45 115
+declaration          : 8
+declaration-list     : 5 8 128
+declaration-specifier : 6 111 112 113 119
+declaration-specifier-list : 5 6 111 112 113 119
+direct-abstract-declarator : 105 112 114
+direct-abstract-declarator-list : 104 115 116
+direct-declarator    : 5 34 35 44 45 46 47 111 121 122
+equality-expression  : 61 62 64 65
+exclusive-or-expression : 57 58 60
+expression           : 82 90 95 136 138 139 140 145
+expression-list      : 144
+expression-statement : 131
+external-declaration : 2
+external-declaration-list : 1 2
+function-definition  : 4
+identifier-list      : 47 48
+inclusive-or-expression : 55 56 58
+init-declarator      : 120
+init-declarator-list : 119 120
+initializer          : 122 126 127
+initializer-list     : 124 125 127
+iteration-statement  : 134
+jump-statement       : 135
+lambda               : 3 7 9 28 38 49 51 86 106 118 130 146
+logical-and-expression : 53 54 56
+logical-or-expression : 52 54 96
+multiplicative-expression : 71 72 73 75 76
+parameter-declaration : 109 110
+parameter-list       : 107 108 110
+parameter-type-list  : 46 117
+parameter-type-list-1 : 116
+postfix-expression   : 79 82 83 84
+primary-expression   : 81
+relational-expression : 63 64 65 67 68 69 70
+selection-statement  : 133
+specifier-qualifier  : 37 104
+specifier-qualifier-list : 27 31 37 104
+statement            : 129 138 139 139 140
+statement-list       : 128 129
+storage-class-specifier : 10
+struct-declaration   : 24 25
+struct-declaration-list : 24 25 27
+struct-declarator    : 32 33
+struct-declarator-list : 31 33
+struct-or-union      : 24 25 26
+struct-or-union-specifier : 23
+translation-unit     : 0
+type-name            : 78
+type-qualifier       : 12 40
+type-specifier       : 11 39
+unary-expression     : 77 97
+unary-operator       : 80
+

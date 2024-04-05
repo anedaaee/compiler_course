@@ -1,0 +1,5 @@
+ali = mamad + hosein
+
+( mamad ) = ali + 12
+
+break 123lsd
